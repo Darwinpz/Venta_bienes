@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="VENTAS" Class="BasedeDatosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=VENTAS;Integrated Security=True;Pooling=False" SettingsObjectName="Venta_bienes.Properties.Settings" SettingsPropertyName="VENTASConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Bienes" Member="Bienes">
+    <Type Name="Bienes">
+      <Column Name="bn_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="bn_nombre" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="bn_precio" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="bn_direccion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Bienes_usuarios_bien" Member="usuarios_bien" ThisKey="bn_id" OtherKey="bn_id" Type="usuarios_bien" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuarios" Member="Usuarios">
+    <Type Name="Usuarios">
+      <Column Name="us_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="us_cedula" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="us_nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="us_edad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="us_clave" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Association Name="Usuarios_usuarios_bien" Member="usuarios_bien" ThisKey="us_id" OtherKey="us_id" Type="usuarios_bien" />
+    </Type>
+  </Table>
+  <Table Name="dbo.usuarios_bien" Member="usuarios_bien">
+    <Type Name="usuarios_bien">
+      <Column Name="bn_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="us_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="fecha_adquisicion" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="Bienes_usuarios_bien" Member="Bienes" ThisKey="bn_id" OtherKey="bn_id" Type="Bienes" IsForeignKey="true" />
+      <Association Name="Usuarios_usuarios_bien" Member="Usuarios" ThisKey="us_id" OtherKey="us_id" Type="Usuarios" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
