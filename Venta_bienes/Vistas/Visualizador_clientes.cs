@@ -41,7 +41,7 @@ namespace Venta_bienes.Vistas
 
             rpt.SetDataSource(datos);
 
-            crystalReportViewer1.ReportSource = rpt;
+            //crystalReportViewer1.ReportSource = rpt;
 
 
 
