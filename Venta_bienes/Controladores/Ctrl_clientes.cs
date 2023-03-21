@@ -38,6 +38,7 @@ namespace Venta_bienes.Controladores
 
             TABLA_CLIENTES.DataSource = datos;
 
+            //ESTA ES UNA PRUEBA
 
         }
 
